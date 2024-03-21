@@ -15,33 +15,35 @@ struct node *tail = 0;
 
 void push(int elementAsParam)
 {
-    struct node *newnode = (struct node*)malloc(sizeof(struct node));
+    struct node *newnode = (struct node *)malloc(sizeof(struct node));
     newnode->data = elementAsParam;
-
-    struct node *temp = head;
+    newnode->prev = newnode->next = 0;
 
     if (head == 0)
     {
-        head = newnode;
+        head = tail = newnode;
+        head->next = newnode;
+        head->prev = newnode;
     }
-
-    while (temp->next != 0)
+    else
     {
-        temp = temp->next;
+        tail->next = newnode;
+        newnode->prev = tail;
+        tail = newnode;
+        tail->next = head;
+        head->prev = tail;
     }
-
-    temp->next = newnode;
-    newnode->prev = temp;
 }
 
 void display()
 {
     struct node *tmp = head;
-    while (tmp == 0)
+    while (tmp->next != head)
     {
         printf("\nElement is : %d", tmp->data);
         tmp = tmp->next;
     }
+    printf("\nElement is : %d", tmp->data);
 }
 
 int main()
