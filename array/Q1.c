@@ -1,5 +1,4 @@
 // Question 1: Find The Lowest Value in an Array.
-
 #include <stdio.h>
 
 int main()
