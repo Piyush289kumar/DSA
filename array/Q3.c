@@ -1,35 +1,29 @@
 // Selection Sort
-
 #include <stdio.h>
-
 int main()
 {
-
-    int myArry[] = {64, 34, 25, 5, 22, 11, 90, 12};
-    int arrayLength = sizeof(myArry) / sizeof(myArry[0]);
-
-    int minEleVal = myArry[0];
-    int minEleIdx = myArry[0];
-    int tmp = 0;
-
-    for (int i = 0; i < arrayLength; i++)
+    int myArray[] = {64, 34, 25, 12, 22, 11, 90, 5};
+    int sizeOfArray = ((sizeof(myArray) / sizeof(myArray[0])) - 1);
+    for (int idx = 0; idx <= sizeOfArray; idx++)
     {
-
-        printf("\nRound %d ", i);
-        printf("\n");
-        for (int idx = i; idx < arrayLength; idx++)
+        int minIdx = idx;
+        for (int innerIdx = idx + 1; innerIdx <= sizeOfArray; innerIdx++)
         {
-            printf("%d ", myArry[idx]);
+            if (myArray[minIdx] > myArray[innerIdx])
+            {
+                minIdx = innerIdx;
+            }
         }
-        minEleIdx++;
+        // Swap the element
+        int temp = myArray[idx];
+        myArray[idx] = myArray[minIdx];
+        myArray[minIdx] = temp;
     }
-
-    printf("Sorted Array: ");
-
-    for (int idx = 0; idx < arrayLength; idx++)
+    // Print Sorted Array
+    printf("\nSorted Array: \n");
+    for (int idx = 0; idx <= sizeOfArray; idx++)
     {
-        printf("%d-", myArry[idx]);
+        printf("%d ", myArray[idx]);
     }
-
     return 0;
 }
