@@ -3,31 +3,40 @@
 using namespace std;
 int main()
 {
-    int myArr[] = {15, 2, 4, 8, 9, 5, 10, 23};
+    int myArr[] = {1,4};
     int length = sizeof(myArr) / sizeof(myArr[0]);
-    int givenSum = 23;
+    int givenSum = 7;
     int calSum = 0;
     int leftIdx = 0;
     for (int idx = leftIdx; idx < length; idx++)
     {
+        if (leftIdx == 0 && idx == length - 1)
+        {
+            cout << endl
+                 << "Sub Array is not Found : -1";
+            return 0;
+        }
         if (calSum == givenSum)
         {
             cout << endl
-                 << "Sub Array Found. Index of subarray = " << leftIdx << " - " << idx << endl;
+                 << "Sub Array Found. Index of subarray = " << ++leftIdx << " - " << idx << endl;
             return 0;
+        }
+        if (myArr[idx] < 0)
+        {
+            continue;
         }
         if (calSum > givenSum)
         {
             calSum -= myArr[leftIdx];
             leftIdx++;
             idx--;
+            cout << "Enter: " <<  endl;
         }
         else
         {
             calSum += myArr[idx];
         }
     }
-    cout << endl
-         << "Sum Cal : " << calSum << endl;
     return 0;
 }
