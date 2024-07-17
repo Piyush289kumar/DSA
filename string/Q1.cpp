@@ -1,102 +1,47 @@
-// Q1: Split Text to Word.
+// Q1: Roman to Integer.
+
 #include <bits/stdc++.h>
 using namespace std;
-int main()
+
+// int romanToNumber(string paramRomanNumber);
+
+int romanToNumber(string paramRomanNumber)
 {
-    // string s = "MCMXCIV";
-    string s = "CM";
-    int sum = 0;
-    for (int i = 0; i < s.length(); i++)
+    string s = paramRomanNumber;
+    int ans = 0;
+    unordered_map<char, int> m;
+
+    m['I'] = 1;
+    m['V'] = 5;
+    m['X'] = 10;
+    m['L'] = 50;
+    m['C'] = 100;
+    m['D'] = 500;
+    m['M'] = 1000;
+
+    for (int i = 0; i < paramRomanNumber.size(); i++)
     {
-        switch (s[i])
+
+        if (m[s[i]] < m[s[i + 1]])
         {
-        case 'I':
-            sum = 1;
-            cout << i << "- s[ " << s[i] << "]" << endl;
-            break;
-        case 'V':
-            if (s[i - 1] == 'I')
-            {
-                sum = 4; // Because we have already added 1 for 'I', we add only 3 more to make 4
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            else if (s[i  1] == 'I')
-            {
-                sum = 5;
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            break;
-        case 'X':
-            if (s[i - 1] == 'I')
-            {
-                sum = 9; // Because we have already added 1 for 'I', we add only 8 more to make 9
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            else
-            {
-                sum = 10;
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            break;
-        case 'L':
-            if (s[i - 1] == 'X')
-            {
-                sum = 40; // Because we have already added 10 for 'X', we add only 30 more to make 40
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            else
-            {
-                sum = 50;
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            break;
-        case 'C':
-
-            if (s[i] == 'C' && s[i - 1] == 'X' && s[i + 1] == 'M')
-            {
-                sum += 90;
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            else if (s[i] == 'C' && s[i - 1] != 'X' && s[i + 1] != 'M')
-            {
-                sum = 100;
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-
-            break;
-        case 'D':
-            if (s[i - 1] == 'C')
-            {
-                sum = 400; // Because we have already added 100 for 'C', we add only 300 more to make 400
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            else
-            {
-                sum = 500;
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            break;
-        case 'M':
-            if (s[i] == 'M' && s[i - 1] == 'C')
-            {
-                sum += 900;
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            else if (s[i] == 'M' && s[i - 1] != 'C')
-            {
-                sum = 1000;
-                cout << i << "- s[ " << s[i] << "]" << endl;
-            }
-            break;
-        default:
-            // Invalid character in Roman numeral string
-            sum = -1;
-            cout << i << "- s[ " << s[i] << "]" << endl;
-
-            return sum;
+            ans -= m[s[i]];
+        }
+        else
+        {
+            ans += m[s[i]];
         }
     }
 
-    cout << "Output : " << sum << endl;
+    return ans;
+}
+
+int main()
+{
+
+    string romanNumber = "MCMXCIV";
+    int number = romanToNumber(romanNumber);
+
+    cout << "OutPut : " << number;
+
     return 0;
 }
