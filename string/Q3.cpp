@@ -21,27 +21,21 @@ Constraints:
 using namespace std;
 bool equalFrequency(string paramWord)
 {
-
     if (paramWord.size() < 2 || paramWord.size() > 100)
     {
         return false;
     }
-
     string word = paramWord;
     vector<pair<char, int>> feq;
     int occure = 0;
-
     // Remove Element
     // abbcc
-    for (int idx = 0; idx < word.size(); idx++)
+    for (int idx = 0; idx <= word.size(); idx++)
     {
         word = paramWord;
         feq.clear();
-        cout << "Ocurre of " << word[idx] << " : " << occure << endl;
-
         // Remove Element
         word.erase(idx, 1);
-
         // Create Fequency Vector Pair
         occure = 0;
         for (int feqidx = 0; feqidx < word.size(); feqidx++)
@@ -56,9 +50,7 @@ bool equalFrequency(string paramWord)
             feq.push_back(make_pair(word[feqidx], occure));
             occure = 0;
         }
-
         bool testFeq = true;
-
         // Check All the element fequency is same so return true otherwise return false
         for (int com_i = 0; com_i < feq.size(); com_i++)
         {
@@ -68,18 +60,16 @@ bool equalFrequency(string paramWord)
                 break;
             }
         }
-
         if (testFeq)
         {
             return true;
         }
     }
-
     return false;
 }
 int main()
 {
-    string word = "abbcc";
+    string word = "ccca";
     cout << (equalFrequency(word) ? "True" : "False") << endl;
     return 0;
 }
