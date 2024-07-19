@@ -23,66 +23,31 @@ Constraints:
 using namespace std;
 bool isValid(string s)
 {
-    int parentheseCurved = 0;
-    int parentheseSquare = 0;
-    int parentheseCurly = 0;
-    for (int idx = 0; idx < s.size(); idx++)
+    stack<char> stack;
+    map<char, char> map;
+    map = {
+        {')', '('},
+        {']', '['},
+        {'}', '{'},
+    };
+    for (char ite : s)
     {
-        if (s[idx] == '(' && s[idx + 1] == ')')
+        if (map.find(ite) != map.end())
         {
-            parentheseCurved++;
-        }
-        else if (s[idx - 1] == '(' && s[idx] == ')')
-        {
-            parentheseCurved--;
-        }
-        else if (s[idx] == '[' && s[idx + 1] == ']')
-        {
-            parentheseSquare++;
-        }
-        else if (s[idx - 1] == '[' && s[idx] == ']')
-        {
-            parentheseSquare--;
-        }
-        else if (s[idx] == '{' && s[idx + 1] == '}')
-        {
-            parentheseCurly++;
-        }
-        else if (s[idx - 1] == '{' && s[idx] == '}')
-        {
-            parentheseCurly--;
+            if (!stack.empty() && stack.top() == map[ite])
+            {
+                stack.pop();
+            }
         }
         else
         {
-            switch (s[idx])
-            {
-            case '(':
-                parentheseCurved++;
-                break;
-            case ')':
-                parentheseCurved -= 2;
-                break;
-            case '[':
-                parentheseSquare++;
-                break;
-            case ']':
-                parentheseSquare -= 2;
-                break;
-            case '{':
-                parentheseCurly++;
-                break;
-            case '}':
-                parentheseCurly -= 2;
-                break;
-            }
+            stack.push(ite);
         }
     }
-    return parentheseCurved == 0 && parentheseSquare == 0 && parentheseCurly == 0;
+    return stack.empty();
 }
 int main()
 {
-    // string str1 = "()[]{}";
-    // string str2 = "()";
-    string str3 = "([)]";
-    cout << "OUTPUT: " << (isValid(str3) ? "True" : "False");
+    string question = "([)]{}";
+    cout << "OUTPUT : " << (isValid(question) ? "TRUE" : "FALSE") << endl;
 }
