@@ -38,6 +38,10 @@ bool isValid(string s)
             {
                 stack.pop();
             }
+            else
+            {
+                return false;
+            }
         }
         else
         {
@@ -48,6 +52,6 @@ bool isValid(string s)
 }
 int main()
 {
-    string question = "([)]{}";
+    string question = "]";
     cout << "OUTPUT : " << (isValid(question) ? "TRUE" : "FALSE") << endl;
 }
