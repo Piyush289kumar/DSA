@@ -23,23 +23,34 @@ using namespace std;
 
 string addBinary(string a, string b)
 {
-    int sum = 0;
+    int i = a.size() - 1;
+    int j = b.size() - 1;
     int carry = 0;
-    int value = 0;
     string ans = "";
 
-    for (int aIdx = a.size() - 1; aIdx < 0; aIdx++)
+    while (i >= 0 || j >= 0)
     {
-        sum = a[aIdx] + b[aIdx] + carry;
-
-        value = sum / 2;
-        carry = sum % 2;
+        int sum = carry;
+        if (i >= 0)
+        {
+            sum += a[i--] - '0';
+        }
+        if (i >= 0)
+        {
+            sum += b[j--] - '0';
+        }
+        carry = sum > 1 ? 1 : 0;
+        ans += to_string(sum % 2);
     }
 
-    ans = "0";
-    cout << "Ans : " << ans << endl;
+    if (carry)
+    {
+        ans += to_string(carry);
+    }
 
-    return "RS";
+    reverse(ans.begin(), ans.end());
+
+    return ans;
 }
 int main()
 {
@@ -48,5 +59,6 @@ int main()
     string b = "1011";
 
     cout << "Binary Sum: " << addBinary(a, b);
+
     return 0;
 }
