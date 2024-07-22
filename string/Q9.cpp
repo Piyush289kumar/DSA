@@ -27,43 +27,39 @@ Constraints:
 using namespace std;
 bool isPalindrome(string s)
 {
-    if (s.size() == 1)
-        return true;
-    int N = s.size() - 1;
-    string palindromeStr = "";
-    for (int idx = 0; idx <= N; idx++)
+
+    int startIdx = 0;
+    int endtIdx = s.size() - 1;
+
+    while (startIdx <= endtIdx)
     {
-        if (s[idx] == ' ')
+        if (isalnum(s[startIdx]))
         {
-            s.erase(idx, 1);
+            startIdx++;
+            continue;
+        }
+        if (isalnum(s[endtIdx]))
+        {
+            endtIdx--;
+            continue;
+        }
+
+        if (tolower(s[startIdx]) == tolower(s[endtIdx]))
+        {
+            startIdx++;
+            endtIdx--;
+        }
+        else
+        {
+            return false;
         }
     }
-    for (int idx = 0; idx <= s.size() - 1; idx++)
-    {
-        if (isalpha(s[idx]) > 0)
-        {
-            palindromeStr += tolower(s[idx]);
-        }
-    }
-    cout << "palindromeStr : " << palindromeStr;
-    // int M = palindromeStr.size() - 1;
-    // int idx = 0;
-    // while (M / 2)
-    // {
-    //     cout << "palindromeStr[idx]: " << palindromeStr[idx] << endl;
-    //     cout << "palindromeStr[M - idx]: " << palindromeStr[M - idx] << endl;
-    //     if (palindromeStr[idx] != palindromeStr[M - idx])
-    //     {
-    //         return false;
-    //         break;
-    //     }
-    //     idx++;
-    // }
     return true;
 }
 int main()
 {
-    string s = "A man, a plan, a canal: Panama";
-    isPalindrome(s);
+    string s = "0P";
+    cout << "OUTPUT: " << (isPalindrome(s) ? "True" : "False");
+
     return 0;
 }
