@@ -24,3 +24,30 @@ Constraints:
 
 #include <iostream>
 using namespace std;
+
+bool isPalindrome(string s)
+{
+    int N = s.size() - 1;
+
+    for (int idx = 0; idx <= N; idx++)
+    {
+        if (s[idx] == ' ')
+        {
+            s.erase(idx, 1);
+        }
+        tolower(s[idx]);
+    }
+
+    cout << "Before S : " << s;
+
+    return true;
+}
+int main()
+{
+
+    string s = "A man, a plan, a canal: Panama";
+
+    isPalindrome(s);
+
+    return 0;
+}
