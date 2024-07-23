@@ -35,15 +35,16 @@ bool isPalindrome(string s)
     while (head < tail)
     {
 
+        cout << "Before: " << endl;
         cout << "tolower(s[head]) : " << s[head] << endl;
         cout << "tolower(s[tail]) : " << s[tail] << endl
              << endl;
 
-        while (head > tail && isalpha(s[head]) == 0)
+        while (head < tail && !isalnum(s[head]))
         {
             head++;
         }
-        while (head > tail && isalpha(s[tail]) == 0)
+        while (head < tail && !isalnum(s[tail]))
         {
             tail--;
         }
@@ -51,6 +52,12 @@ bool isPalindrome(string s)
         {
             return false;
         }
+
+        cout << "After: " << endl;
+        cout << "tolower(s[head]) : " << s[head] << endl;
+        cout << "tolower(s[tail]) : " << s[tail] << endl
+             << endl;
+
         head++;
         tail--;
     }
@@ -59,8 +66,8 @@ bool isPalindrome(string s)
 int main()
 {
     // string s = "A man, a plan, a canal: Panama";
-    string s = "race a car";
-    // string s = "0P";
+    // string s = "race a car";
+    string s = "0P";
     cout << "OUTPUT: " << (isPalindrome(s) ? "True" : "False");
     return 0;
 }
