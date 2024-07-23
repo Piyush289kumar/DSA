@@ -28,38 +28,39 @@ using namespace std;
 bool isPalindrome(string s)
 {
 
-    int startIdx = 0;
-    int endtIdx = s.size() - 1;
-
-    while (startIdx <= endtIdx)
+    if (s.size() <= 1)
+        return true;
+    int head = 0;
+    int tail = s.size() - 1;
+    while (head < tail)
     {
-        if (isalnum(s[startIdx]))
-        {
-            startIdx++;
-            continue;
-        }
-        if (isalnum(s[endtIdx]))
-        {
-            endtIdx--;
-            continue;
-        }
 
-        if (tolower(s[startIdx]) == tolower(s[endtIdx]))
+        cout << "tolower(s[head]) : " << s[head] << endl;
+        cout << "tolower(s[tail]) : " << s[tail] << endl
+             << endl;
+
+        while (head > tail && isalpha(s[head]) == 0)
         {
-            startIdx++;
-            endtIdx--;
+            head++;
         }
-        else
+        while (head > tail && isalpha(s[tail]) == 0)
+        {
+            tail--;
+        }
+        if (tolower(s[head]) != tolower(s[tail]))
         {
             return false;
         }
+        head++;
+        tail--;
     }
     return true;
 }
 int main()
 {
-    string s = "0P";
+    // string s = "A man, a plan, a canal: Panama";
+    string s = "race a car";
+    // string s = "0P";
     cout << "OUTPUT: " << (isPalindrome(s) ? "True" : "False");
-
     return 0;
 }
