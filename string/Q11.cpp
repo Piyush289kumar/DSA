@@ -27,5 +27,19 @@ Constraints:
     columnTitle consists only of uppercase English letters.
     columnTitle is in the range ["A", "FXSHRXW"]. */
 
+#include <bits/stdc++.h>
+using namespace std;
 
-#include<bits/stdc++.h>
+string NumberToTitle(string columnTitle)
+{
+
+    int N = columnTitle.size();
+
+}
+int main()
+{
+    string s = "ZY";
+
+    cout << "OUTPUT: " << NumberToTitle(s);
+    return 0;
+}
