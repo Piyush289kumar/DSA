@@ -36,9 +36,15 @@ bool isIsomorphic(string s, string t)
 
         for (int sIdx = tIdx; sIdx < s.size(); sIdx++)
         {
-            cout << "t[tIdx] : " << t[tIdx] << "  - s[sIdx] : " << s[sIdx] << endl;
-            if (s[tIdx] == s[sIdx])
-                s[sIdx] = t[tIdx];
+            // cout << "t[tIdx] : " << t[tIdx] << "  - s[sIdx] : " << s[sIdx] << endl
+            //      << endl
+            //      << endl;
+            
+            // if (s[tIdx] == s[sIdx])
+            // {
+                // s[sIdx] = t[tIdx];
+                cout << "s[tIdx] : " << s[tIdx] << "  - s[sIdx] : " << s[sIdx] << endl;
+            // }
         }
     }
 
