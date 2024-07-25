@@ -26,6 +26,7 @@ using namespace std;
 
 bool isIsomorphic(string s, string t)
 {
+    string sCopy = s;
     if (s.size() != t.size())
     {
         return false;
@@ -33,24 +34,12 @@ bool isIsomorphic(string s, string t)
 
     for (int tIdx = 0; tIdx < t.size(); tIdx++)
     {
-
-        for (int sIdx = tIdx; sIdx < s.size(); sIdx++)
-        {
-            // cout << "t[tIdx] : " << t[tIdx] << "  - s[sIdx] : " << s[sIdx] << endl
-            //      << endl
-            //      << endl;
-            
-            // if (s[tIdx] == s[sIdx])
-            // {
-                // s[sIdx] = t[tIdx];
-                cout << "s[tIdx] : " << s[tIdx] << "  - s[sIdx] : " << s[sIdx] << endl;
-            // }
-        }
+        sCopy[tIdx] = t[tIdx];
     }
 
-    cout << "S: " << s << endl;
+    cout << "S: " << sCopy << endl;
     cout << "T: " << t << endl;
-    return (s == t);
+    return (sCopy == t);
 }
 
 int main()
