@@ -35,6 +35,11 @@ string NumberToTitle(string columnTitle)
 
     int N = columnTitle.size();
 
+    string response = "";
+    if (N < 1 || N > 7)
+    {
+        return response;
+    }
 }
 int main()
 {
