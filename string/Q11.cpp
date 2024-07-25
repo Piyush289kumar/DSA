@@ -26,25 +26,27 @@ Constraints:
     1 <= columnTitle.length <= 7
     columnTitle consists only of uppercase English letters.
     columnTitle is in the range ["A", "FXSHRXW"]. */
-
 #include <bits/stdc++.h>
 using namespace std;
-
-string NumberToTitle(string columnTitle)
+int NumberToTitle(string columnTitle)
 {
-
     int N = columnTitle.size();
-
-    string response = "";
+    int response = 0;
     if (N < 1 || N > 7)
     {
         return response;
     }
+    for (int idx = 0; idx < N; idx++)
+    {
+        int rem = 0;
+        rem = (columnTitle[idx] - 'A') + 1;
+        response = (response * 26) + rem;
+    }
+    return response;
 }
 int main()
 {
     string s = "ZY";
-
     cout << "OUTPUT: " << NumberToTitle(s);
     return 0;
 }
