@@ -24,12 +24,37 @@ Constraints:
     Only one valid answer exists.
 */
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> twoSum(vector<int> &nums, int target)
 {
+    vector<int> ans;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        for (int j = 0; j < nums.size(); j++)
+        {
+            if ((nums[i] + nums[j]) == target)
+            {
+                ans.push_back(nums[i]);
+                ans.push_back(nums[j]);
+            }
+        }
+    }
+
+    return ans;
 }
 int main()
 {
+    vector<int> nums = {1, 2, 3, 4, 5};
+    int target = 9;
+
+    vector<int> ans = twoSum(nums, target);
+
+    cout << "OUTPUT : " << endl;
+
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i] << " ";
+    }
 }
