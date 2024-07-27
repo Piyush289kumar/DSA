@@ -28,19 +28,34 @@ using namespace std;
 
 vector<int> searchRange(vector<int> &nums, int target)
 {
-    for (int i = 0; i < nums.size(); i++)
-    {
-        cout << nums[i] << endl;
-    }
+    int left = 0;
+    int right = nums.size() - 1;
 
-    vector<int> ans;
+    vector<int> ans = {-1, -1};
+
+    while (ans[0] == -1 || ans[1] == -1)
+    {
+        if (nums[left] == target)
+        {
+            ans[0] = left;
+        }
+        if (nums[right] == target)
+        {
+            ans[1] = right;
+        }
+
+        left++;
+        right--;
+    }
 
     return ans;
 }
 
 int main()
 {
-    vector<int> nums = {1, 2, 3};
-    searchRange(nums, 1);
+    vector<int> nums = {1, 2, 3, 1, 2, 5};
+    int target = 1;
+    vector<int> result = searchRange(nums, target);
+    cout << "[" << result[0] << "," << result[1] << "]" << endl;
     return 0;
 }
