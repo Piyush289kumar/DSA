@@ -20,10 +20,8 @@ Constraints:
     t.length == s.length
     s and t consist of any valid ascii character.
 */
-
 #include <bits/stdc++.h>
 using namespace std;
-
 bool isIsomorphic(string s, string t)
 {
     string sCopy = s;
@@ -31,17 +29,14 @@ bool isIsomorphic(string s, string t)
     {
         return false;
     }
-
     for (int tIdx = 0; tIdx < t.size(); tIdx++)
     {
         sCopy[tIdx] = t[tIdx];
     }
-
     cout << "S: " << sCopy << endl;
     cout << "T: " << t << endl;
     return (sCopy == t);
 }
-
 int main()
 {
     string s = "foo";
