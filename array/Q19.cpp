@@ -21,18 +21,13 @@ Constraints:
     nums is a non-decreasing array.
     -109 <= target <= 109
 */
-
 #include <bits/stdc++.h>
-
 using namespace std;
-
 vector<int> searchRange(vector<int> &nums, int target)
 {
     int left = 0;
     int right = nums.size() - 1;
-
     vector<int> ans = {-1, -1};
-
     while (ans[0] == -1 || ans[1] == -1)
     {
         if (nums[left] == target)
@@ -43,14 +38,11 @@ vector<int> searchRange(vector<int> &nums, int target)
         {
             ans[1] = right;
         }
-
         left++;
         right--;
     }
-
     return ans;
 }
-
 int main()
 {
     vector<int> nums = {1, 2, 3, 1, 2, 5};
