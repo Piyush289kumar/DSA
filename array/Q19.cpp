@@ -32,13 +32,13 @@ int fistBinarySearch(vector<int> &nums, int target)
 
     while (first < last)
     {
-        middle = 
+        middle = ((first + last) / 2);
 
-        if (middle < target)
+        if (nums[middle] < target)
         {
             first = middle + 1;
         }
-        if (middle == target)
+        if (nums[middle] == target)
         {
             last = middle - 1;
         }
@@ -47,7 +47,25 @@ int fistBinarySearch(vector<int> &nums, int target)
 }
 int lastBinarySearch(vector<int> &nums, int target)
 {
-    return 4;
+    int first = 0;
+    int last = nums.size() - 1;
+    int middle = 0;
+
+    while (first < last)
+    {
+        middle = ((first + last) / 2);
+       
+
+        if (nums[middle] < target)
+        {
+            first = middle + 1;
+        }
+        if (nums[middle] == target)
+        {
+            last = middle;
+            return last;
+        }
+    }
 }
 
 vector<int> searchRange(vector<int> &nums, int target)
