@@ -23,17 +23,14 @@ Constraints:
 */
 #include <bits/stdc++.h>
 using namespace std;
-
 int fistBinarySearch(vector<int> &nums, int target)
 {
     int first = 0;
     int last = nums.size() - 1;
     int middle = 0;
-
-    while (first < last)
+    while (first <= last)
     {
         middle = ((first + last) / 2);
-
         if (nums[middle] < target)
         {
             first = middle + 1;
@@ -50,36 +47,41 @@ int lastBinarySearch(vector<int> &nums, int target)
     int first = 0;
     int last = nums.size() - 1;
     int middle = 0;
-
-    while (first < last)
+    int ans = -1;
+    while (first <= last)
     {
         middle = ((first + last) / 2);
-       
-
+        if (nums[middle] == target)
+        {
+            ans = middle;
+            first = middle + 1;
+        }
+        if (nums[middle] > target)
+        {
+            last = middle - 1;
+        }
         if (nums[middle] < target)
         {
             first = middle + 1;
         }
-        if (nums[middle] == target)
-        {
-            last = middle;
-            return last;
-        }
     }
+    return ans;
 }
-
 vector<int> searchRange(vector<int> &nums, int target)
 {
     vector<int> ans = {-1, -1};
+    if (nums.size() <= 1)
+    {
+        return ans;
+    }
     ans[0] = fistBinarySearch(nums, target);
     ans[1] = lastBinarySearch(nums, target);
     return ans;
 }
-
 int main()
 {
     vector<int> nums = {5, 7, 7, 8, 8, 10};
-    int target = 8;
+    int target = 6;
     vector<int> result = searchRange(nums, target);
     cout << "[" << result[0] << "," << result[1] << "]" << endl;
     return 0;
