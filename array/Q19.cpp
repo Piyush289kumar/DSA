@@ -23,22 +23,16 @@ Constraints:
 */
 #include <bits/stdc++.h>
 using namespace std;
-int fistBinarySearch(vector<int> &nums, int target)
+int binarySearch(vector<int> &nums, int target, bool isSearchLastIdx)
 {
     int first = 0;
     int last = nums.size() - 1;
-    int idx = -1;
     int middle = 0;
-    while (first < last)
+    int idx = -1;
+    while (first <= last)
     {
-        middle = last + (first - last) / 2;
-        cout << "Middle : " << middle << endl;
-        if (nums[middle] == target)
-        {
-            idx = middle;
-            last = middle - 1;
-        }
-        else if (nums[middle] < target)
+        middle = (last + ((first - last) / 2));
+        if (nums[middle] < target)
         {
             first = middle + 1;
         }
@@ -46,12 +40,13 @@ int fistBinarySearch(vector<int> &nums, int target)
         {
             last = middle - 1;
         }
+        else if (nums[middle] == target)
+        {
+            idx = middle;
+            isSearchLastIdx ? first = middle + 1 : last = middle - 1;
+        }
     }
     return idx;
-}
-int lastBinarySearch(vector<int> &nums, int target)
-{
-    return 2;
 }
 vector<int> searchRange(vector<int> &nums, int target)
 {
@@ -60,14 +55,14 @@ vector<int> searchRange(vector<int> &nums, int target)
     {
         return ans;
     }
-    ans[0] = fistBinarySearch(nums, target);
-    ans[1] = lastBinarySearch(nums, target);
+    ans[0] = binarySearch(nums, target, false);
+    ans[1] = binarySearch(nums, target, true);
     return ans;
 }
 int main()
 {
     vector<int> nums = {5, 7, 7, 8, 8, 10};
-    int target = 8;
+    int target = 7;
     vector<int> result = searchRange(nums, target);
     cout << "[" << result[0] << "," << result[1] << "]" << endl;
     return 0;
