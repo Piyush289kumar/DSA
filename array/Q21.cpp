@@ -22,32 +22,21 @@ Constraints:
  */
 #include <bits/stdc++.h>
 using namespace std;
-int searchInsert(vector<int> &nums, int target)
-{
-    int firstIdx = 0;
-    int lastIdx = nums.size() - 1;
-    int middle = 0;
-    int idx = 0;
-    while (firstIdx <= lastIdx)
-    {
-        middle = lastIdx + (firstIdx - lastIdx) / 2;
-        if (nums[middle] == target)
-        {
-            return middle;
+int searchInsert(vector<int>& nums, int target) {
+        int firstIdx = 0;
+        int lastIdx = nums.size() - 1;
+        while (firstIdx <= lastIdx) {
+            int middle = lastIdx + (firstIdx - lastIdx) / 2;
+            if (nums[middle] == target) {
+                return middle;
+            } else if (nums[middle] > target) {
+                lastIdx = middle - 1;
+            }else{
+                firstIdx = middle + 1;
+            }
         }
-        else if (nums[middle] < target)
-        {
-            idx = middle + 1;
-            firstIdx = middle + 1;
-        }
-        else if (nums[middle] > target)
-        {
-            idx = middle;
-            lastIdx = middle - 1;
-        }
+        return firstIdx;
     }
-    return idx;
-}
 int main()
 {
     vector<int> nums = {1, 3, 5, 6};
