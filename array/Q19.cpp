@@ -50,8 +50,8 @@ int binarySearch(vector<int> &nums, int target, bool isSearchLastIdx)
 }
 vector<int> searchRange(vector<int> &nums, int target)
 {
-    vector<int> ans = {-1, -1};
-    if (nums.size() <= 1)
+    vector<int> ans = {0, 0};
+    if (nums.size() < 1)
     {
         return ans;
     }
