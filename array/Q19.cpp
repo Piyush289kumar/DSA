@@ -25,47 +25,11 @@ Constraints:
 using namespace std;
 int fistBinarySearch(vector<int> &nums, int target)
 {
-    int first = 0;
-    int last = nums.size() - 1;
-    int middle = 0;
-    while (first <= last)
-    {
-        middle = ((first + last) / 2);
-        if (nums[middle] < target)
-        {
-            first = middle + 1;
-        }
-        if (nums[middle] == target)
-        {
-            last = middle - 1;
-        }
-    }
-    return first;
+    return 1;
 }
 int lastBinarySearch(vector<int> &nums, int target)
 {
-    int first = 0;
-    int last = nums.size() - 1;
-    int middle = 0;
-    int ans = -1;
-    while (first <= last)
-    {
-        middle = ((first + last) / 2);
-        if (nums[middle] == target)
-        {
-            ans = middle;
-            first = middle + 1;
-        }
-        if (nums[middle] > target)
-        {
-            last = middle - 1;
-        }
-        if (nums[middle] < target)
-        {
-            first = middle + 1;
-        }
-    }
-    return ans;
+    return 2;
 }
 vector<int> searchRange(vector<int> &nums, int target)
 {
