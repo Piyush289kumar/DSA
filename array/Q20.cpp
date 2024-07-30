@@ -25,37 +25,31 @@ using namespace std;
 int firstBadVersion(int n)
 {
     if (n == 1)
-        return 1;
-        
-    vector<int> versionArr;
-    for (int idx = 1; idx <= n; idx++)
     {
-        versionArr.push_back(idx);
+        return 1;
     }
-    int lowerBound = 0;
-    int upperBound = versionArr.size() - 1;
+    int firstIdx = 1;
+    int lastIdx = n;
     int middle = 0;
     int idx = 0;
-    while (lowerBound <= upperBound)
+    while (firstIdx <= lastIdx)
     {
-        middle = upperBound + (lowerBound - upperBound) / 2;
-        // bool apiCall = isBadVersion(middle);
-        bool apiCall = false;
-        if (apiCall)
+        middle = lastIdx + (firstIdx - lastIdx) / 2;
+        bool apiRes = isBadVersion(middle);
+        if (apiRes)
         {
-            upperBound = middle - 1;
             idx = middle;
+            lastIdx = middle - 1;
         }
         else
         {
-            lowerBound = middle + 1;
+            firstIdx = middle + 1;
         }
-        apiCall = true;
     }
     return idx;
 }
 int main()
 {
-    int n = 2;
+    int n = 5;
     return 0;
 }
