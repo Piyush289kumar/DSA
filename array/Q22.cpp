@@ -27,8 +27,29 @@ Constraints:
 #include <bits/stdc++.h>
 using namespace std;
 
+int modifyBinarySearch(vector<int> &nums, int target, left, right)
+{
+    if (left > right)
+    {
+        return -1;
+    }
+
+    int midd = right + (left - right) / 2;
+
+    if (nums[left] <= nums[midd])
+    {
+        if (nums[left] <= target && nums[midd] >= target){
+            return modifyBinarySearch(nums, target, left, midd - 1);
+        }
+    }
+}
+
 int search(vector<int> &nums, int target)
 {
+    int left = 0;
+    int right = nums.size() - 1;
+
+    return modifyBinarySearch(nums, target, left, right);
 }
 
 int main()
