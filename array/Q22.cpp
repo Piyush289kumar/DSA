@@ -23,22 +23,18 @@ Constraints:
     nums is an ascending array that is possibly rotated.
     -104 <= target <= 104
 */
-
 #include <bits/stdc++.h>
 using namespace std;
-
 int modifyBinarySearch(vector<int> &nums, int target, int left, int right)
 {
     if (left > right)
     {
         return -1;
     }
-
     int midd = right + (left - right) / 2;
     if(nums[midd] == target){
         return midd;
     }
-
     if (nums[left] <= nums[midd])
     {
         if (nums[left] <= target && nums[midd] >= target)
@@ -60,15 +56,12 @@ int modifyBinarySearch(vector<int> &nums, int target, int left, int right)
         }
     }
 }
-
 int search(vector<int> &nums, int target)
 {
     int left = 0;
     int right = nums.size() - 1;
-
     return modifyBinarySearch(nums, target, left, right);
 }
-
 int main()
 {
     vector<int> nums = {4, 5, 6, 7, 0, 1, 2};
