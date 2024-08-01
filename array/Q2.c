@@ -1,14 +1,10 @@
 // Bubble Sort
-
 #include <stdio.h>
 #include <stdbool.h>
-
 int main()
 {
     int inputArry[] = {3, 7, 12, 9, 11};
-
     int arrayLength = sizeof(inputArry) / sizeof(inputArry[0]);
-
     for (int trm = 0; trm < arrayLength; trm++)
     {
         bool isSwapAble = false;
@@ -27,7 +23,6 @@ int main()
             break;
         }
     }
-
     for (int idx = 0; idx < arrayLength; idx++)
     {
         printf("\n %d: ", inputArry[idx]);
