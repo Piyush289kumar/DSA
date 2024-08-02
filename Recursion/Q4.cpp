@@ -5,6 +5,8 @@ using namespace std;
 
 int sumOfArrayEl(vector<int> &nums, int low, int high)
 {
+    if (high == 0)
+        return 0;
     if (low == high)
         return nums[high];
 
@@ -14,7 +16,7 @@ int sumOfArrayEl(vector<int> &nums, int low, int high)
 
 int main()
 {
-    vector<int> nums = {3, 2, 5, 1, 6};
+    vector<int> nums = {2, 4, 9, 9, 9};
     int low = 0;
     int high = nums.size() - 1;
     int sum = sumOfArrayEl(nums, low, high);
