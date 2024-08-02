@@ -19,11 +19,22 @@ Constraints:
     -231 <= n <= 231 - 1
 Follow up: Could you solve it without loops/recursion? */
 
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-int main(){
+bool isPowerOfTwo(int n)
+{
+    cout << "OUTPUT : " << n % 2;
+
     
+    return true;
+}
+
+int main()
+{
+
+    int n = 8;
+    isPowerOfTwo(n);
+    return 0;
 }
