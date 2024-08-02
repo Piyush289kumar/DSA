@@ -20,21 +20,22 @@ Constraints:
 Follow up: Could you solve it without loops/recursion? */
 
 #include <bits/stdc++.h>
-
 using namespace std;
 
 bool isPowerOfTwo(int n)
 {
-    cout << "OUTPUT : " << n % 2;
-
-    
-    return true;
+    if (n <= 0)
+        return false;
+    if (n == 1)
+        return true;
+    if (n % 2 != 0)
+        return false;
+    return isPowerOfTwo(n / 2);
 }
 
 int main()
 {
-
-    int n = 8;
-    isPowerOfTwo(n);
+    int n = 17;
+    cout << "OUTPUT : " << (isPowerOfTwo(n) ? "TURE" : "FALSE");
     return 0;
 }
