@@ -13,7 +13,7 @@ vector<int> bubbleSort(vector<int> &nums, int first, int last)
 
     while (first < last)
     {
-        if (maxEl > nums[first])
+        if (maxEl < nums[first])
             maxEl = nums[first];
 
         first++;
