@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int calculatePower(int n, int m)
+double calculatePower(double n, int m)
 {
 
     if (m == 0)
@@ -12,7 +12,7 @@ int calculatePower(int n, int m)
     if (m == 1)
         return n;
 
-    int ans = pow(n, m / 2);
+    double ans = pow(n, m / 2);
 
     if (m % 2 == 0)
         return ans * ans;
@@ -22,9 +22,9 @@ int calculatePower(int n, int m)
 
 int main()
 {
-    int n = 3;
-    int m = 10;
-    int result = calculatePower(n, m);
+    double n = 2.10000;
+    int m = 3;
+    double result = calculatePower(n, m);
 
     cout << "OUTPUT : " << result;
 }
