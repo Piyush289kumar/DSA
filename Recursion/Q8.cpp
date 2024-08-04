@@ -1,0 +1,1 @@
+/* Q8: Calculate n^m. */
