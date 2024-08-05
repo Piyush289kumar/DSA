@@ -1,39 +1,33 @@
 /* Q7: Bubble Sort Using Recursion. */
 #include <bits/stdc++.h>
 using namespace std;
-vector<int> bubbleSort(vector<int> &nums, int first, int last)
+
+vector<int> bubbleSort(vector<int> &nums)
 {
-    if (first == last)
-        return nums;
-    int maxEl = nums[firist];
-    while (first < last)
+    int n = nums.size();
+
+    for (int idx = n - 1; idx > 0; idx--)
     {
-        if (maxEl < nums[first])
-            maxEl = nums[first];
-        first++;
+        for (int j = 0; j < idx; j++)
+        {
+            if (nums[j] > nums[j + 1])
+                swap(nums[j], nums[j + 1]);
+        }
     }
-    nums[last] = maxEl;
-    return bubbleSort(nums, first, last - 1);
+
+    return nums;
 }
+
 int main()
 {
-    vector<int> nums = {4, 5, 6, 7, 8, 10, 2, 1};
-    int first = 0;
-    int last = nums.size() - 1;
-    cout << "BEFORE ::::::: " << endl
-         << endl;
-    for (int idx = 0; idx < nums.size() - 1; idx)
+
+    vector<int> nums = {1, 2, 4, 8, 6, 3, 1};
+
+    vector<int> ans = bubbleSort(nums);
+
+    for (int idx = 0; idx < ans.size(); idx++)
     {
-        cout << idx << " - " << nums[idx] << endl;
-    }
-    cout << endl
-         << endl;
-    bubbleSort(nums, first, last);
-    cout << "AFTER ::::::: " << endl
-         << endl;
-    for (int idx = 0; idx < nums.size() - 1; idx)
-    {
-        cout << idx << " - " << nums[idx] << endl;
+        cout << " - " << ans[idx];
     }
     return 0;
 }
