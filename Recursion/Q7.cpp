@@ -2,20 +2,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> bubbleSort(vector<int> &nums)
+vector<int> bubbleSort(vector<int> &nums, int end)
 {
-    int n = nums.size();
-
-    for (int idx = n - 1; idx > 0; idx--)
+    if (0 == end)
+        return nums;
+    for (int idx = 0; idx < end; idx++)
     {
-        for (int j = 0; j < idx; j++)
-        {
-            if (nums[j] > nums[j + 1])
-                swap(nums[j], nums[j + 1]);
-        }
+        if (nums[idx] > nums[idx + 1])
+            swap(nums[idx], nums[idx + 1]);
     }
-
-    return nums;
+    return bubbleSort(nums, end - 1);
 }
 
 int main()
@@ -23,11 +19,22 @@ int main()
 
     vector<int> nums = {1, 2, 4, 8, 6, 3, 1};
 
-    vector<int> ans = bubbleSort(nums);
-
-    for (int idx = 0; idx < ans.size(); idx++)
+    cout << "Before Bubble Sort : " << endl;
+    for (int idx = 0; idx < nums.size(); idx++)
     {
-        cout << " - " << ans[idx];
+        cout << " - " << nums[idx];
+    }
+    cout << endl
+         << endl;
+
+    int start = 0;
+    int end = nums.size() - 1;
+    bubbleSort(nums, end);
+
+    cout << "After Bubble Sort : " << endl;
+    for (int idx = 0; idx < nums.size(); idx++)
+    {
+        cout << " - " << nums[idx];
     }
     return 0;
 }
