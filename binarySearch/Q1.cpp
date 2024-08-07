@@ -21,42 +21,56 @@ Constraints:
     nums is a non-decreasing array.
     -109 <= target <= 109
 */
-
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
-
-int findFirstIdx(vector<int> &nums, int target, int first, int last)
+int findFirstIdx(vector<int> &nums, int target, int first, int last, int idx)
 {
-    return -1;
-}
-int findLastIdx(vector<int> &nums, int target, int first, int last)
-{
-    return -1;
+    if (first > last)
+        return idx;
+    int mid = last + (first - last) / 2;
+    if (nums[mid] >= target)
+    {
+        return findFirstIdx(nums, target, first, mid - 1, mid);
+    }
+    else
+    {
+        return findFirstIdx(nums, target, mid + 1, last, idx);
+    }
 }
 
+int findLastIdx(vector<int> &nums, int target, int first, int last, int idx)
+{
+    if (first > last)
+        return idx;
+    int mid = last + (first - last) / 2;
+    if (nums[mid] == target)
+        return findLastIdx(nums, target, mid + 1, last, mid);
+
+    if (nums[mid] > target)
+    {
+        return findLastIdx(nums, target, first, mid - 1, idx);
+    }
+    else
+    {
+        return findLastIdx(nums, target, mid + 1, last, idx);
+    }
+}
 vector<int> findFirstAndLastIndex(vector<int> &nums, int target)
 {
     vector<int> response = {0, 0};
     int first = 0;
     int last = nums.size() - 1;
-
-    response[0] = findFirstIdx(nums, target, first, last);
-    response[0] = findLastIdx(nums, target, first, last);
-
+    int idx = -1;
+    response[0] = findFirstIdx(nums, target, first, last, idx);
+    response[1] = findLastIdx(nums, target, first, last, idx);
     return response;
 }
-
 int main()
 {
-    vector<int> nums = {0, 5, 5, 6, 6, 6};
-    int target = 5;
+    vector<int> nums = {0, 5, 5, 6, 6, 6, 6};
+    int target = 6;
     vector<int> ans = findFirstAndLastIndex(nums, target);
-
     cout << "OUTPUT :" << endl;
-
     cout << "FIRST IDX : " << ans[0] << " | LAST IDX : " << ans[1];
-
     return 0;
 }
