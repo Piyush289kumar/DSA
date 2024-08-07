@@ -22,34 +22,28 @@ Constraints:
 
 #include <iostream>
 #include <vector>
-using namespace std;
 
+using namespace std;
 int findPeakElement(vector<int> nums, int start, int end)
 {
     if (start == end)
         return start;
-
     int mid = (start + end) / 2;
-
     if (nums[mid] < nums[mid + 1])
         return findPeakElement(nums, mid + 1, end);
     else
         return findPeakElement(nums, start, mid);
 }
-
 int peakIndexInMountainArray(vector<int> &arr)
 {
     int start = 0;
     int end = arr.size() - 1;
     return findPeakElement(arr, start, end);
 }
-
 int main()
 {
     vector<int> arr = {0, 5, 10, 5, 2};
-
     int ans = peakIndexInMountainArray(arr);
-
     cout << "OUTPUT : " << ans;
     return 0;
 }
