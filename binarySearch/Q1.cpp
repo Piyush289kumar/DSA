@@ -36,7 +36,7 @@ int findLastIdx(vector<int> &nums, int target, int first, int last)
     return -1;
 }
 
-vector<int> findFirstAndLastIndex(vector<int> &nums, target)
+vector<int> findFirstAndLastIndex(vector<int> &nums, int target)
 {
     vector<int> response = {0, 0};
     int first = 0;
