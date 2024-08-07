@@ -37,7 +37,6 @@ int findFirstIdx(vector<int> &nums, int target, int first, int last, int idx)
         return findFirstIdx(nums, target, mid + 1, last, idx);
     }
 }
-
 int findLastIdx(vector<int> &nums, int target, int first, int last, int idx)
 {
     if (first > last)
@@ -45,7 +44,6 @@ int findLastIdx(vector<int> &nums, int target, int first, int last, int idx)
     int mid = last + (first - last) / 2;
     if (nums[mid] == target)
         return findLastIdx(nums, target, mid + 1, last, mid);
-
     if (nums[mid] > target)
     {
         return findLastIdx(nums, target, first, mid - 1, idx);
