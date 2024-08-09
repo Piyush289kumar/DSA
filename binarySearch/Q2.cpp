@@ -41,6 +41,19 @@ using namespace std;
 //     return findPeakElement(arr, start, end);
 // }
 
+int findPeak(vector<int> nums, int start, int end)
+{
+    if (start == end)
+        return start;
+
+    int mid = (start + end) / 2;
+
+    if (nums[mid] < nums[mid + 1])
+        return findPeak(nums, mid + 1, end);
+    else
+        return findPeak(nums, start, mid);
+}
+
 int peakIndexInMountainArray(vector<int> &arr)
 {
     int start = 0;
@@ -50,7 +63,7 @@ int peakIndexInMountainArray(vector<int> &arr)
 }
 int main()
 {
-    vector<int> arr = {0, 5, 10, 5, 2};
+    vector<int> arr = {0, 5, 6, 10, 5, 2};
     int ans = peakIndexInMountainArray(arr);
     cout << "OUTPUT : " << ans;
     return 0;
