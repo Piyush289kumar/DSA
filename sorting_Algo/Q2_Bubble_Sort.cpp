@@ -10,20 +10,26 @@ vector<int> bubbleSort(vector<int> &nums)
 
     for (int idx = 0; idx < nums.size(); idx++)
     {
-        for (int j = 0; j < nums.size() - idx; j++)
+        bool swapped = false;
+        for (int j = 0; j < nums.size() - idx - 1; j++)
         {
             if (nums[j] > nums[j + 1])
             {
                 swap(nums[j], nums[j + 1]);
+                swapped = true;
             }
         }
+
+        if (!swapped)
+            break;
     }
+
     return nums;
 }
 
 int main()
 {
-    vector<int> nums = {4, 5, 9, 7, 1, 3, 10};
+    vector<int> nums = {1, 2, 3, 4, 7, 6};
 
     bubbleSort(nums);
     cout
