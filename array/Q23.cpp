@@ -5,13 +5,16 @@
 
 using namespace std;
 
-vector<int> reverseArry(vector<int> &nums)
+vector<int> reverseArry(vector<int> &nums, int m)
 {
-    int size = nums.size();
+    int s = m;
+    int e = nums.size() - 1;
 
-    for (int idx = 0; idx < size / 2; idx++)
+    while (s <= e)
     {
-        swap(nums[idx], nums[size - idx - 1]);
+        swap(nums[s], nums[e]);
+        s++;
+        e--;
     }
 
     return nums;
@@ -19,8 +22,8 @@ vector<int> reverseArry(vector<int> &nums)
 
 int main()
 {
-
-    vector<int> nums = {4, 5, 6, 7, 8};
+    vector<int> nums = {10, 9, 8, 7, 6};
+    int m = 2; // Idx Where User Want to Starting Array Reversing.
 
     cout << "ORG Array : " << endl;
     for (auto i : nums)
@@ -28,7 +31,7 @@ int main()
         cout << i << " ";
     }
 
-    reverseArry(nums);
+    reverseArry(nums, m);
 
     cout << endl
          << "Reverse Array : " << endl;
