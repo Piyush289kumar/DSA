@@ -45,46 +45,25 @@ Constraints:
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
-void merge(vector<int> nums1, int m, vector<int> nums2, int n)
+void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
 {
-    int last = m + n - 1;
+
     int i = m - 1;
     int j = n - 1;
+    int last = m + n - 1;
 
-    while (i >= 0 && j >= 0)
-    {
-        if (nums1[i] >= nums2[j])
-        {
-            nums1[last] = nums1[i];
-            i--;
-        }
-        else
-        {
-            nums1[last] = nums2[j];
-            j--;
-        }
-        last--;
-    }
-
-    while (j >= 0)
+    while (last > i)
     {
         nums1[last] = nums2[j];
         last--;
         j--;
     }
 
-    cout << endl
-         << "RESPONSE ARRAY --> " << endl;
-
-    for (int i = 0; i < nums1.size(); i++)
-    {
-        cout << nums1[i] << " | ";
-    }
-    cout << endl
-         << endl;
+    sort(begin(nums1), end(nums1));
 }
 
 int main()
@@ -96,20 +75,22 @@ int main()
     // vector<int> nums2 = {2, 5, 6};
     // int n = 3;
 
-    // vector<int> nums1 = {0};
-    // int m = 0;
+    vector<int> nums1 = {0};
+    int m = 0;
 
-    // vector<int> nums2 = {1};
-    // int n = 1;
+    vector<int> nums2 = {1};
+    int n = 1;
 
-    vector<int> nums1 = {4, 5, 6, 0, 0, 0};
-    int m = 3;
+    // vector<int> nums1 = {4, 5, 6, 0, 0, 0};
+    // int m = 3;
 
-    vector<int> nums2 = {1, 2, 3};
-    int n = 3;
+    // vector<int> nums2 = {1, 2, 3};
+    // int n = 3;
+
+    merge(nums1, m, nums2, n);
 
     cout << endl
-         << "ORG ARRAY --> " << endl;
+         << "MERGE ARRAY --> " << endl;
 
     for (int i = 0; i < nums1.size(); i++)
     {
@@ -117,8 +98,6 @@ int main()
     }
     cout << endl
          << endl;
-
-    merge(nums1, m, nums2, n);
 
     return 0;
 }
