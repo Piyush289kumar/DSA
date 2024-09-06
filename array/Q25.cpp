@@ -50,50 +50,62 @@ using namespace std;
 
 void merge(vector<int> nums1, int m, vector<int> nums2, int n)
 {
-    int i = 0;
-    int j = 0;
+    int last = m + n - 1;
+    int i = m - 1;
+    int j = n - 1;
 
-    while (i < m)
+    while (i >= 0 && j >= 0)
     {
-        if (nums1[i] > nums2[j])
+        if (nums1[i] >= nums2[j])
         {
-            nums1[i + 1] = nums1[i];
-            nums1[i] = nums2[j];
-            j++;
+            nums1[last] = nums1[i];
+            i--;
         }
         else
         {
-            i++;
+            nums1[last] = nums2[j];
+            j--;
         }
+        last--;
     }
 
-    i++;
-    while (i < nums1.size())
+    while (j >= 0)
     {
-        nums1[i] = nums2[j];
-        i++;
-        j++;
+        nums1[last] = nums2[j];
+        last--;
+        j--;
     }
 
     cout << endl
-         << "I : " << i << " | J : " << j << endl;
-
-    cout << endl
-         << "MERGE SORTED ARRAY --> " << endl;
+         << "RESPONSE ARRAY --> " << endl;
 
     for (int i = 0; i < nums1.size(); i++)
     {
         cout << nums1[i] << " | ";
     }
+    cout << endl
+         << endl;
 }
 
 int main()
 {
 
-    vector<int> nums1 = {1, 2, 3, 0, 0, 0};
+    // vector<int> nums1 = {1, 2, 3, 0, 0, 0};
+    // int m = 3;
+
+    // vector<int> nums2 = {2, 5, 6};
+    // int n = 3;
+
+    // vector<int> nums1 = {0};
+    // int m = 0;
+
+    // vector<int> nums2 = {1};
+    // int n = 1;
+
+    vector<int> nums1 = {4, 5, 6, 0, 0, 0};
     int m = 3;
 
-    vector<int> nums2 = {2, 5, 6};
+    vector<int> nums2 = {1, 2, 3};
     int n = 3;
 
     cout << endl
