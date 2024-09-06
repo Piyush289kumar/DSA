@@ -41,19 +41,14 @@ void rotate(vector<int> &nums, int k)
 
     int size = nums.size();
 
-    if (size >= 1 || size <= pow(10, 5))
+    if (size >= 1 && size <= pow(10, 5))
     {
-        while (k > 0)
+        vector<int> tempArr(size);
+        for (int idx = 0; idx < size; idx++)
         {
-            int numsEndElement = nums[size - 1];
-
-            for (int idx = size - 1; idx > 0; idx--)
-            {
-                nums[idx] = nums[idx - 1];
-            }
-            nums[0] = numsEndElement;
-            k--;
+            tempArr[(idx + k) % size] = nums[idx];
         }
+        nums = tempArr;
     }
 }
 
@@ -70,5 +65,5 @@ int main()
         cout << " " << nums[idx];
     }
 
-    return 1;
+    return 0;
 }
