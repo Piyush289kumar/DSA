@@ -57,7 +57,7 @@ void reverseWord(vector<char> &s)
 int main()
 {
 
-    vector<char> s = {'m', 'y', ' ', 'n', 'a', 'm', 'e', ' ', 'i', 's'};
+    vector<char> s = {'t','h', 'e',' ','s','k','y',' ','i','s',' ','b','l','u', 'e'};
 
     reverseWord(s);
 
