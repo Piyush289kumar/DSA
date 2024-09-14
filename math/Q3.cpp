@@ -14,7 +14,6 @@ Time limit: 1 sec
 */
 
 #include <iostream>
-
 using namespace std;
 
 int modularExponentiation(int x, int n, int m)
