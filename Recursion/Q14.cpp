@@ -19,7 +19,7 @@ int sumOfArr(int arr[], int n)
 int main()
 {
 
-    int arr[5] = {1, 2, 3, 4, 5};
+    int arr[5] = {2, 4, 9, 9, 9};
     int n = 5;
 
     cout << "RESPONSE ==> " << sumOfArr(arr, n);
