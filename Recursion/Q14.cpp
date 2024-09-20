@@ -9,7 +9,9 @@ using namespace std;
 int sumOfArr(int arr[], int n)
 {
 
-    if (n <= 1)
+    if (n == 0)
+        return 0;
+    if (n == 1)
         return arr[0];
     return arr[0] + sumOfArr(arr + 1, n - 1);
 }
