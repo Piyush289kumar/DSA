@@ -19,46 +19,27 @@ void print(vector<int> &result)
          << endl;
 }
 
-bool checkSortedOrNot(vector<int> &arr)
+vector<int> helperArrRange(vector<int> &arr, int end)
 {
-    for (int i = 0; i < arr.size() - 1; i++)
+    if (end == 0)
+        return arr;
+
+    // Swap Order
+    for (int i = 0; i < end - 1; i++)
     {
         if (arr[i] > arr[i + 1])
-            return false;
+        {
+            swap(arr[i], arr[i + 1]);
+        }
     }
-    return true;
-}
 
-void swapElement(vector<int> &arr, int start, int end)
-{
-    if (start >= end)
-        return;
-
-    if (arr[start] > arr[start + 1])
-        swap(arr[start], arr[start + 1]);
-
-    return swapElement(arr, start + 1, end);
-}
-
-vector<int> helperArrRange(vector<int> &arr, int start, int end)
-{
-    if (end == 0 || checkSortedOrNot(arr))
-    {
-        return arr;
-    }
-    // Function Called
-    swapElement(arr, start, end);
-
-    print(arr);
-
-    return helperArrRange(arr, start, end - 1); // Recursive Call
+    return helperArrRange(arr, end - 1); // Recursive Call
 }
 
 vector<int> bubbleSort(vector<int> &arr)
 {
-    int start = 0;
     int end = arr.size() - 1;
-    return helperArrRange(arr, start, end);
+    return helperArrRange(arr, end);
 }
 
 int main()
