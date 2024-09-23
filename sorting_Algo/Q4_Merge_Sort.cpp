@@ -1,4 +1,8 @@
-/* Q4: Merge Sort. */
+/* Q4: Merge Sort.
+
+Time Complexity ==> O(n log n)
+Space Complexity ==> O(n)
+*/
 
 #include <iostream>
 #include <vector>
@@ -54,6 +58,9 @@ void mergeArr(vector<int> &arr, int start, int end)
     {
         arr[mainIndex++] = secondTempArray[index2++];
     }
+
+    delete []firstTempArray;
+    delete []secondTempArray;
 }
 
 void mergeSort(vector<int> &arr, int start, int end)
