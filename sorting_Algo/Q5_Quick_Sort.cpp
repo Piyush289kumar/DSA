@@ -12,7 +12,7 @@ int partition(vector<int> &arr, int start, int end)
     int countElementWhoLessThenPivot = 0;
 
     // Counting
-    for (int idx = start; idx <= end; idx++)
+    for (int idx = start + 1; idx <= end; idx++)
     {
         if (arr[idx] < pivotElement)
         {
@@ -29,7 +29,7 @@ int partition(vector<int> &arr, int start, int end)
     int i = start;
     int j = end;
 
-    while (i < pivotIdx && j > pivotIdx)
+    while (i <= pivotIdx && j >= pivotIdx)
     {
         while (arr[i] < arr[pivotIdx])
         {
@@ -40,9 +40,9 @@ int partition(vector<int> &arr, int start, int end)
             j--;
         }
 
-        if (i < pivotIdx && j > pivotIdx)
+        if (i <= pivotIdx && j >= pivotIdx)
         {
-            swap(arr[i++], arr[j++]);
+            swap(arr[i++], arr[j--]);
         }
     }
 
@@ -67,7 +67,7 @@ void quickSort(vector<int> &arr, int start, int end)
 int main()
 {
 
-    vector<int> arr = {4, 2, 3, 5, 6, 7, 1};
+    vector<int> arr = {-99, -91, 5, 0, 6, 7, 3, 1};
     int start = 0;
     int end = arr.size() - 1;
 
