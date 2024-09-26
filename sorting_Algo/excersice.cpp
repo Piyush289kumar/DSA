@@ -1,12 +1,12 @@
 /* Sorting Algo. */
 
-// 1. Merge Sort
-
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
+/*
+// 1. Merge Sort
 void merge(vector<int> &arr, int start, int end)
 {
     int mid = start + (end - start) / 2;
@@ -78,6 +78,69 @@ void mergeSort(vector<int> &arr, int start, int end)
     // Merge To Array
     merge(arr, start, end);
 }
+*/
+
+// 2. Quick Sort
+
+int helper(vector<int> &arr, int start, int end)
+{
+
+    int pivotElement = arr[start];
+
+    // Count Less Elements
+    int countLessThenPivot = 0;
+
+    for (int i = start; i <= end; i++)
+    {
+        if (arr[i] < pivotElement)
+        {
+            countLessThenPivot++;
+        }
+    }
+
+    int pivotIdx = start + countLessThenPivot;
+
+    swap(arr[start], arr[pivotIdx]);
+
+    int i = start;
+    int j = end;
+
+    while (i < pivotIdx && j > pivotIdx)
+    {
+        while (arr[i] < arr[pivotIdx])
+        {
+            i++;
+        }
+
+        while (arr[j] > arr[pivotIdx])
+        {
+            j--;
+        }
+
+        if (i < pivotIdx && j > pivotIdx)
+        {
+
+            swap(arr[i++], arr[j--]);
+        }
+    }
+
+    return pivotIdx;
+}
+
+void quickSort(vector<int> &arr, int start, int end)
+{
+
+    if (start >= end)
+        return;
+
+    int p = helper(arr, start, end);
+
+    // Left Partition
+    quickSort(arr, start, p - 1);
+
+    // Right Partition
+    quickSort(arr, p + 1, end);
+}
 
 int main()
 {
@@ -86,7 +149,8 @@ int main()
     int start = 0;
     int end = arr.size() - 1;
 
-    mergeSort(arr, start, end);
+    //mergeSort(arr, start, end);
+    quickSort(arr, start, end);
 
     cout << endl
          << endl
