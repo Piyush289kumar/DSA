@@ -33,9 +33,12 @@ Constraints:
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
+/*
+Integer Qustion
 void helper(vector<int> nums, vector<vector<int>> &ans, int idx)
 {
     if (idx >= nums.size())
@@ -62,24 +65,61 @@ vector<vector<int>> permute(vector<int> &nums)
 
     return ans;
 }
+*/
+
+void helper(string str, vector<string> &ans, int idx, int n)
+{
+    if (idx >= n)
+    {
+        ans.push_back(str);
+        return;
+    }
+
+    for (int i = idx; i < n; i++)
+    {
+        swap(str[i], str[idx]);
+        helper(str, ans, idx + 1, n);
+        swap(str[i], str[idx]);
+    }
+}
+vector<string> permute(string str)
+{
+    vector<string> ans;
+    int idx = 0;
+    int n = str.size();
+    helper(str, ans, idx, n);
+    return ans;
+}
 
 int main()
 {
     vector<int> nums = {1, 2, 3};
+    string str = "abc";
 
-    vector<vector<int>> response = permute(nums);
+    // vector<vector<int>> response = permute(nums);
+    vector<string> response = permute(str);
+
+    // cout << endl
+    //      << endl
+    //      << "RESPONSE ==> " << endl;
+    // for (int i = 0; i < response.size(); i++)
+    // {
+    //     cout << "[ ";
+    //     for (int j = 0; j < response[i].size(); j++)
+    //     {
+    //         cout << response[i][j] << " ";
+    //     }
+    //     cout << "]" << endl;
+    // }
 
     cout << endl
          << endl
-         << "RESPONSE ==> ";
+         << "RESPONSE ==> " << endl;
     for (int i = 0; i < response.size(); i++)
     {
-        cout<< "[ ";
-        for (int j = 0; j < response[i].size(); j++)
-        {
-            cout << response[i][j] << " ";
-        }
-        cout << "]";
+        cout << "[";
+        cout << response[i];
+        cout << "]" << endl;
     }
 
     return 0;
