@@ -101,7 +101,10 @@ vector<string> findPath(vector<vector<int>> &mat)
     vector<string> path;
 
     if (mat[0][0] == 0)
+    {
+        path = {"-1"};
         return path;
+    }
 
     int n = mat.size();
     int scrX = 0;
