@@ -33,6 +33,13 @@ Expected Space Complexity: O(1)
 
 Constraints:
 0 <= N <= 18
+
+
+============================
+
+Time Complexity (TC): O(n).
+
+Space Complexity (SC): O(1).
 */
 
 #include <iostream>
