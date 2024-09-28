@@ -1,5 +1,5 @@
 /* Q5: Prime Factors
-Difficulty: EasyAccuracy: 30.47%Submissions: 43K+Points: 2
+Difficulty: Easy
 
 Given a number N. Find its unique prime factors in increasing order.
 
@@ -37,6 +37,8 @@ Constraints:
 #include <vector>
 
 using namespace std;
+
+bool
 
 vector<int> AllPrimeFactors(int n)
 {
