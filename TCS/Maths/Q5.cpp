@@ -38,17 +38,50 @@ Constraints:
 
 using namespace std;
 
-bool
+void solve(int n, vector<int> &ans)
+{
+    vector<int> helper(n + 1, true);
+    vector<int> allPrime;
+
+    helper[0] = helper[1] = false;
+    for (int i = 2; i <= n; i++)
+    {
+        if (helper[i])
+        {
+            allPrime.push_back(i);
+
+            for (int j = i; j <= n; j = j + i)
+            {
+                helper[j] = false;
+            }
+        }
+    }
+
+    for (int i = 0; i < allPrime.size(); i++)
+    {
+        if (n % allPrime[i] == 0)
+        {
+            ans.push_back(allPrime[i]);
+        }
+    }
+}
 
 vector<int> AllPrimeFactors(int n)
 {
-   
+    vector<int> ans;
+
+    if (n <= 1)
+        return ans;
+
+    solve(n, ans);
+
+    return ans;
 }
 
 int main()
 {
 
-    int n = 100;
+    int n = 2;
     vector<int> ans = AllPrimeFactors(n);
 
     cout << endl
