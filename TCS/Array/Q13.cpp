@@ -55,7 +55,17 @@ int majorityElement(vector<int> &nums)
         }
     }
 
-    return ans;
+    // Check Element is Majority Element or not
+
+    fq = 0;
+
+    for (int n : arr)
+    {
+        if (n == ans)
+            fq++;
+    }
+
+    return ((fq > majorLimit) ? ans : -1);
 }
 
 int main()
