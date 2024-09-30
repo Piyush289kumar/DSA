@@ -1,4 +1,10 @@
 /* Q9: Find the element that appears once in sorted array
+
+==============================
+EVEN ODD Rule - Binary Search
+==============================
+
+
 Difficulty: Easy
 
 Given a sorted array arr[] of size N. Find the element that appears only once in the array. All other elements appear exactly twice.
@@ -11,8 +17,6 @@ arr[] = {1, 1, 2, 2, 3, 3, 4, 50, 50, 65, 65}
 Output: 4
 Explanation: 4 is the only element that
 appears exactly once.
-
-
 
 Your Task:
 You don't need to read input or print anything. Complete the function findOnce() which takes sorted array and its size as its input parameter and returns the element that appears only once.
