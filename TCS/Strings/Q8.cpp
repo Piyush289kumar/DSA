@@ -41,26 +41,9 @@ Space Complexity (SC): O(n).
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
-
-string to_hex(int n)
-{
-    if (n == 0)
-        return "0";
-
-    string hex = "";
-    string hexChar = "0123456789ABCDEF";
-
-    while (n != 0)
-    {
-        int digit = n % 16;
-        hex = hexChar[digit] + hex;
-        n /= 16;
-    }
-
-    return hex;
-}
 
 string encryptString(string s)
 {
@@ -68,27 +51,28 @@ string encryptString(string s)
 
     int n = s.length();
 
-    int fq = 1;
+    int fq = 0;
 
-    for (int i = 1; i <= s.length(); i++)
+    for (int i = 0; i < n; i++)
     {
-        if (i < n && s[i] == s[i - 1])
+        fq++;
+        if (i + 1 < n && s[i] == s[i + 1])
         {
-            fq++;
+            continue;
         }
-        else
-        {
-            encryptStr = to_hex(fq) + s[i - 1] + encryptStr;
-            fq = 1;
-        }
+
+        encryptStr += s[i] + to_string(fq);
+        fq = 0;
     }
+
+    reverse(encryptStr.begin(), encryptStr.end());
 
     return encryptStr;
 }
 
 int main()
 {
-    string s = "aabc";
+    string s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabc";
 
     string res = encryptString(s);
 
