@@ -32,15 +32,18 @@ string findOddBalloon(vector<char> &arr)
 
     for (char c : arr)
     {
-        c = tolower(c);
-        fq[c - 'a']++;
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+        {
+            c = tolower(c);
+            fq[c - 'a']++;
+        }
     }
 
     for (int i = 0; i < fq.size(); i++)
     {
         if (fq[i] % 2 == 1)
         {
-            ans = string(1, char(i + 'a'));
+            ans = string(1, tolower(char(i + 'a')));
             return ans;
         }
     }
