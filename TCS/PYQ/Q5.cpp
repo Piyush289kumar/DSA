@@ -23,30 +23,26 @@ void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
 {
     vector<int> temp(m + n);
 
-    int i = 0;
-    int j = 0;
-    int mainIdx = 0;
+    int i = m - 1;
+    int j = n - 1;
+    int mainIdx = m + n - 1;
 
-    while (mainIdx < (m + n))
+    while (i >= 0 && j >= 0)
     {
-
-        cout << endl
-             << "nums1[i] : " << nums1[i] << " | " << "nums2[j] : " << nums2[j] << endl;
-
-        if ((i < m) && (nums1[i] <= nums2[j]))
+        if ((nums1[i] <= nums2[j]))
         {
-            temp[mainIdx++] = nums1[i++];
+            nums1[mainIdx--] = nums1[i--];
         }
         else
         {
-            if (j < n)
-            {
-                temp[mainIdx++] = nums2[j++];
-            }
+            nums1[mainIdx--] = nums2[j--];
         }
     }
 
-    nums1 = temp;
+    if (j >= 0)
+    {
+        nums1[mainIdx--] = nums2[j--];
+    }
 
     return;
 }
