@@ -16,33 +16,23 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
 {
-    vector<int> temp(m + n);
 
     int i = m - 1;
     int j = n - 1;
     int mainIdx = m + n - 1;
 
-    while (i >= 0 && j >= 0)
-    {
-        if ((nums1[i] <= nums2[j]))
-        {
-            nums1[mainIdx--] = nums1[i--];
-        }
-        else
-        {
-            nums1[mainIdx--] = nums2[j--];
-        }
-    }
-
-    if (j >= 0)
+    while (mainIdx >= m)
     {
         nums1[mainIdx--] = nums2[j--];
     }
+
+    sort(nums1.begin(), nums1.end());
 
     return;
 }
