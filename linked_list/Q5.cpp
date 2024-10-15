@@ -52,6 +52,33 @@ void printList(ListNode *head)
     return;
 }
 
+ListNode *reverseCircularList(ListNode *&head)
+{
+    if (head == nullptr || head->nxt == nullptr)
+    {
+        return head;
+    }
+
+    ListNode *prev = nullptr;
+    ListNode *curr = head;
+    ListNode *next = nullptr;
+
+    do
+    {
+        next = curr->nxt;
+        curr->nxt = prev;
+        prev = curr;
+        curr = next;
+
+    } while (curr != nullptr && curr != head);
+
+    head->nxt = prev;
+
+    head = prev;
+
+    return head;
+}
+
 int main()
 {
 
@@ -66,6 +93,10 @@ int main()
     append(head, 7);
     append(head, 8);
     append(head, 9);
+    printList(head);
+
+    reverseCircularList(head);
+
     printList(head);
 
     return 1;
