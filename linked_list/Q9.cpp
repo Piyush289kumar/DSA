@@ -1,4 +1,4 @@
-/* Q9: c
+/* Q9: 83. Remove Duplicates from Sorted List
 Easy
 Topics
 Companies
