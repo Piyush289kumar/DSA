@@ -85,12 +85,6 @@ ListNode *solve(ListNode *list1, ListNode *list2)
         return list1;
     }
 
-    // if (list2->next == nullptr)
-    // {
-    //     list2->next = list1;
-    //     return list2;
-    // }
-
     ListNode *curr1 = list1;
     ListNode *next1 = curr1->next;
 
