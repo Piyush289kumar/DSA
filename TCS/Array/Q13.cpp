@@ -59,11 +59,13 @@ int majorityElement(vector<int> &nums)
 
     fq = 0;
 
-    for (int n : arr)
+    for (int n : nums)
     {
         if (n == ans)
             fq++;
     }
+
+    int majorLimit = nums.size()/2;
 
     return ((fq > majorLimit) ? ans : -1);
 }
