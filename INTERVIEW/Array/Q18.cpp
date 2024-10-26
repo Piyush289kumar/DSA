@@ -40,7 +40,7 @@ int missingNumber(vector<int> &arr)
 
 int main()
 {
-    vector<int> arr = {1, 2, 3, 5};
+    vector<int> arr = {4, 6, 7, 9, 2, 1, 8, 11, 10, 3};
 
     cout << "RSEPONSE ==> " << missingNumber(arr);
     return 0;
