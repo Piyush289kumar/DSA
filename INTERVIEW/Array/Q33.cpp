@@ -26,13 +26,111 @@ using namespace std;
    7.  If no triplet is found, return 0
 */
 
+// ************* Coding Plateform *************
+
+// 1. LeetCode
+// sum == 0;
+vector<vector<int>> threeSum(vector<int> &nums)
+{
+    int n = nums.size();
+    vector<vector<int>> ans;
+    if (n <= 0)
+    {
+        return ans;
+    }
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < n - 2; i++) // Room for 3 elements
+    {
+        if (i > 0 && nums[i] == nums[i - 1])
+        {
+            continue;
+        }
+        int left = i + 1;
+        int right = n - 1;
+        while (left < right)
+        {
+            int sum = nums[i] + nums[left] + nums[right];
+            if (sum == 0)
+            {
+                ans.push_back({nums[i], nums[left], nums[right]});
+                while (left < right && nums[left] == nums[left + 1])
+                {
+                    left++;
+                }
+                while (right > left && nums[right] == nums[right - 1])
+                {
+                    right--;
+                }
+                left++;
+                right--;
+            }
+            else if (sum < 0)
+            {
+                left++;
+            }
+            else
+            {
+                right--;
+            }
+        }
+    }
+    return ans;
+}
+// 2. Code Studio
+vector<vector<int>> findTriplets(vector<int> arr, int n, int K)
+{
+    vector<vector<int>> ans;
+    if (n <= 0)
+    {
+        return ans;
+    }
+    sort(arr.begin(), arr.end());
+    for (int i = 0; i < n - 2; i++) // Room for 3 elements
+    {
+        if (i > 0 && arr[i] == arr[i - 1])
+        {
+            continue;
+        }
+        int left = i + 1;
+        int right = n - 1;
+        while (left < right)
+        {
+            int sum = arr[i] + arr[left] + arr[right];
+            if (sum == K)
+            {
+                ans.push_back({arr[i], arr[left], arr[right]});
+                while (left < right && arr[left] == arr[left + 1])
+                {
+                    left++;
+                }
+                while (right > left && arr[right] == arr[right - 1])
+                {
+                    right--;
+                }
+                left++;
+                right--;
+            }
+            else if (sum < K)
+            {
+                left++;
+            }
+            else
+            {
+                right--;
+            }
+        }
+    }
+    return ans;
+}
+// 3. GeeksForGeeks
 bool find3Numbers(int arr[], int n, int x)
 {
     if (n <= 0)
     {
         return false;
     }
-    for (int i = 0; i < n - 2; i++) // Room for 3 elements
+    sort(arr, arr + n);
+    for (int i = 0; i < n - 2; i++)
     {
         int left = i + 1;
         int right = n - 1;
