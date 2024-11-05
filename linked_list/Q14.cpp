@@ -124,18 +124,11 @@ bool isPalindrome(Node *&head)
     Node *head2 = middle->next;
     bool isPalindrome = true;
 
-    // Debug print statements to show both halves
-    cout << "\nComparing the list halves:" << endl;
-
     while (head2 != nullptr)
     {
-        cout << "HEAD 1: " << head1->data << "  ";
-        cout << "HEAD 2: " << head2->data << endl;
-
         if (head1->data != head2->data)
         {
-            isPalindrome = false;
-            cout << "\nMismatch found, not a palindrome.\n";
+            isPalindrome = false;            
             break;
         }
 
