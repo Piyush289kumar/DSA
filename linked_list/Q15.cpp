@@ -63,6 +63,7 @@ void printList(Node *head)
         head = head->next;
     }
 }
+
 Node *reverseList(Node *head)
 {
     if (head == nullptr || head->next == nullptr)
