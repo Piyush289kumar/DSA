@@ -41,8 +41,6 @@ int equilibriumPoint(vector<int> &arr)
 
         if (((currSum * 2) - arr[idx]) == allSum)
         {
-            cout << "currSum : " << currSum << endl;
-
             ans = idx+1;
             return ans;
         }
