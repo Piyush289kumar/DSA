@@ -20,18 +20,20 @@ using namespace std;
 
 int findSmallest(vector<int> &nums)
 {
-    int n = nums.size();
-    if (n == 0)
+    if (nums.empty())
     {
         return -1;
     }
-    if (n == 1)
-    {
-        return nums[0];
+
+    int smallest = INT_MAX;
+    
+    for(int num : nums){
+        if(smallest > num){
+            smallest = num;
+        }
     }
-    int ans = -1;
-    sort(nums.begin(), nums.end());
-    return nums[0];
+
+    return smallest;
 }
 
 int main()
@@ -40,10 +42,12 @@ int main()
     cout << "Enter Size Of Vector : ";
     cin >> n;
     vector<int> nums(n);
-    for (int idx = 0; idx < n; idx++)
+
+    for (int &num : nums)
     {
-        cin >> nums[idx];
+        cin >> num;
     }
+
     cout << "RESPONSE ==> " << findSmallest(nums);
     return 0;
 }
