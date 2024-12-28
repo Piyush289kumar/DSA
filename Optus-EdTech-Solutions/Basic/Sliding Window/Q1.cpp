@@ -8,6 +8,7 @@ int subArryMaxSum(vector<int>& nums, int k){
 
     int left = 0;
     int right = 0;
+    
     int maxSum = 0;
     int currSum = 0;
 
