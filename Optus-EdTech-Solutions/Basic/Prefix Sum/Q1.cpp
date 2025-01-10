@@ -6,18 +6,26 @@ using namespace std;
 
 vector<int> findPrefixSum(vector<int> &nums, vector<vector<int>> pq)
 {
+    vector<int> prefixSum(nums.size());
+    int prefixCurrSum = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        prefixCurrSum += nums[i];
+        prefixSum[i] = prefixCurrSum;
+    }
+
+    // Calculate Sum By Position
     vector<int> ans;
     for (int i = 0; i < pq.size(); i++)
     {
-        int startIdx = pq[i][0];
-        int endIdx = pq[i][1];
-
-        int currSum = 0;
-        for (int j = startIdx; j <= endIdx; j++)
+        if (i != 0)
         {
-            currSum += nums[j];
+            ans.push_back(prefixSum[pq[i].back()] - prefixSum[pq[i].front() - 1]);
         }
-        ans.push_back(currSum);
+        else
+        {
+            ans.push_back(prefixSum[pq[i].back()]);
+        }
     }
 
     return ans;
@@ -27,7 +35,7 @@ int main()
 {
 
     vector<int> nums = {1, 1, -1, 2, 3, 4};
-    vector<vector<int>> pq = {{0, 4}, {1, 2}, {4, 5}};
+    vector<vector<int>> pq = {{0, 4}, {1, 4}, {2, 3}, {1, 5}};
     vector<int> res = findPrefixSum(nums, pq);
 
     // Printing
