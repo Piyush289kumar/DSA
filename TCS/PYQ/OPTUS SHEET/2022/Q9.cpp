@@ -76,125 +76,38 @@ Badam-Pista Drink*/
 string menuItem()
 {
 
+    unordered_map<string, unordered_map<int, string>> menu = {
+        {"c", {
+                  {1, "Espresso Coffee"},
+                  {2, "Cappuccino Coffee"},
+                  {3, "Latte Coffee"},
+              }},
+        {"t", {{1, "Plain Tea"}, {2, "Assam Tea"}, {3, "Ginger Tea"}, {4, "Cardamom Tea"}, {5, "Masala Tea"}, {6, "Lemon Tea"}, {7, "Green Tea"}, {8, "Organic Darjeeling Tea"}}},
+        {"s", {{1, "Hot and Sour Soup"}, {2, "Veg Corn Soup"}, {3, "Tomato Soup"}, {4, "Spicy Tomato Soup"}}},
+        {"b", {
+                  {1, "Hot Chocolate Drink"},
+                  {2, "Badam Drink"},
+                  {3, "Badam-Pista Drink"},
+              }}};
+
     string mainItem;
     int subItem;
-    string ans = "Enjoy your ";
+    cin >> mainItem >> subItem;
 
-    cin >> mainItem;
+    transform(mainItem.begin(), mainItem.end(), mainItem.begin(), ::tolower);
 
-    if (mainItem == "c" || mainItem == "C")
+    if (menu.find(mainItem) != menu.end() && menu[mainItem].find(subItem) != menu[mainItem].end())
     {
-
-        unordered_map<int, string> sMenu = {
-            {1, "Espresso Coffee"},
-            {2, "Cappuccino Coffee"},
-            {3, "Latte Coffee"},
-
-        };
-        cin >> subItem;
-
-        if (sMenu.find(subItem) != sMenu.end())
-        {
-            ans += sMenu[subItem];
-            return ans;
-        }
-        else
-        {
-            ans = "INVALID OUTPUT!";
-            return ans;
-        }
+        return "Welcome to CCD! \nEnjoy your " + menu[mainItem][subItem] + "!";
     }
-    else if (mainItem == "t" || mainItem == "T")
-    {
 
-        unordered_map<int, string> sMenu = {
-            {1, "Plain Tea"},
-            {2, "Assam Tea"},
-            {3, "Ginger Tea"},
-            {4, "Cardamom Tea"},
-            {5, "Masala Tea"},
-            {6, "Lemon Tea"},
-            {7, "Green Tea"},
-            {8, "Organic Darjeeling Tea"},
-
-        };
-        cin >> subItem;
-
-        if (sMenu.find(subItem) != sMenu.end())
-        {
-            ans += sMenu[subItem];
-            return ans;
-        }
-        else
-        {
-            ans = "INVALID OUTPUT!";
-            return ans;
-        }
-    }
-    else if (mainItem == "s" || mainItem == "S")
-    {
-
-        unordered_map<int, string> sMenu = {
-            {1, "Hot and Sour Soup"},
-            {2, "Veg Corn Soup"},
-            {3, "Tomato Soup"},
-            {4, "Spicy Tomato Soup"},
-
-        };
-        cin >> subItem;
-
-        if (sMenu.find(subItem) != sMenu.end())
-        {
-            ans += sMenu[subItem];
-            return ans;
-        }
-        else
-        {
-            ans = "INVALID OUTPUT!";
-            return ans;
-        }
-    }
-    else if (mainItem == "b" || mainItem == "B")
-    {
-
-        unordered_map<int, string> sMenu = {
-            {1, "Hot Chocolate Drink"},
-            {2, "Badam Drink"},
-            {3, "Badam-Pista Drink"},
-
-        };
-        cin >> subItem;
-
-        if (sMenu.find(subItem) != sMenu.end())
-        {
-            ans += sMenu[subItem];
-            return ans;
-        }
-        else
-        {
-            ans = "INVALID OUTPUT!";
-            return ans;
-        }
-    }
-    else
-    {
-
-        return "INVALID OUTPUT!";
-    }
+    return "INVALID OUTPUT!";
 }
 
 int main()
 {
     string res = menuItem();
-    if (res == "INVALID OUTPUT!")
-    {
-        cout << res << endl;
-    }
-    else
-    {
+    cout << res << endl;
 
-        cout << "Welcome to CCD!" << endl;
-        cout << res << endl;
-    }
     return 0;
 }
