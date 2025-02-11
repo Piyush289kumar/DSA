@@ -1,38 +1,38 @@
-/* Q19: Rotate array by K elements. */
-
+/* Q19: Sort Elements of an Array by Frequency. */
 #include <bits/stdc++.h>
 using namespace std;
 
-void rotateArrayByK(vector<int> &nums, int k)
+void sortByFreq(vector<int> &nums)
 {
-    if (nums.size() <= 1)
+    unordered_map<int, int> freq;
+    for (int num : nums)
     {
-        return;
-    }
-    int N = nums.size();
-    vector<int> temp(N, 0);
-
-    for (int i = 0; i < N; i++)
-    {
-        temp[(i + k) % N] = nums[i];
+        freq[num]++;
     }
 
-    nums = temp;
+    sort(nums.begin(), nums.end(), [&](int a, int b)
+         {
+        if(freq[a] != freq[b]){
+            return freq[a] > freq[b];
+        }else{
+            return a < b;
+        } });
 }
 
 int main()
 {
-    int N, K;
-    cin >> N >> K;
+    int N;
+    cin >> N;
     vector<int> nums(N);
     for (int i = 0; i < N; i++)
         cin >> nums[i];
 
-    rotateArrayByK(nums, K);
+    sortByFreq(nums);
+
     for (auto num : nums)
     {
         cout << num << ", ";
     }
-    cout << endl;
+
     return 0;
 }
