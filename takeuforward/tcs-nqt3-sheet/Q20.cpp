@@ -1,42 +1,38 @@
-/* Q20: Finding Equilibrium index in an array. */
+/* Q20: Rotate array by K elements. */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-int findEquilibrium(vector<int> &nums)
+void rotateArrayByK(vector<int> &nums, int k)
 {
-    int totalSum = 0;
-    for (int num : nums)
+    if (nums.size() <= 1)
     {
-        totalSum += num;
+        return;
+    }
+    int N = nums.size();
+    vector<int> temp(N, 0);
+
+    for (int i = 0; i < N; i++)
+    {
+        temp[(i + k) % N] = nums[i];
     }
 
-    int currSum = 0;
-    int ans = -1;
-    for (int i = 0; i < nums.size(); i++)
-    {
-        currSum += nums[i];
-
-        if (totalSum == ((currSum * 2) - nums[i]))
-        {
-            return i;
-        }
-    }
-
-    return -1;
+    nums = temp;
 }
 
 int main()
 {
-    int N;
-    cin >> N;
+    int N, K;
+    cin >> N >> K;
     vector<int> nums(N);
     for (int i = 0; i < N; i++)
-    {
         cin >> nums[i];
+
+    rotateArrayByK(nums, K);
+    for (auto num : nums)
+    {
+        cout << num << ", ";
     }
-
-    cout << findEquilibrium(nums) << endl;
-
+    cout << endl;
     return 0;
 }
