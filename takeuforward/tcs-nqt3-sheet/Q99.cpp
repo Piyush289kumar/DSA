@@ -5,6 +5,7 @@ using namespace std;
 string reverseWords(string str)
 {
     stringstream ss(str);
+    
     string word, ans;
 
     while (ss >> word)
