@@ -4,19 +4,18 @@ using namespace std;
 
 string reverseWords(string str)
 {
-    string ans;
+    stringstream ss(str);
+    string word, ans;
 
-    string temp;
-    for (auto ch : str)
+    while (ss >> word)
     {
-        temp += ch;
-        if (ch == ' ')
-        {
-            ans = temp + ans;
-            temp = "";
-        }
+        ans = word + " " + ans;
     }
-    ans = temp + " " + ans;
+
+    if (!ans.empty() && ans.back() == ' ')
+    {
+        ans.pop_back();
+    }
 
     return ans;
 }
