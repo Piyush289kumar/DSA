@@ -38,14 +38,14 @@ void riskServerity(vector<int> &nums)
             mid++;
             left++;
         }
-        else if (nums[mid] == 1)
-        {
-            mid++;
-        }
-        else
+        else if (nums[mid] == 2)
         {
             swap(nums[mid], nums[right]);
             right--;
+        }
+        else
+        {
+            mid++;
         }
     }
 }
