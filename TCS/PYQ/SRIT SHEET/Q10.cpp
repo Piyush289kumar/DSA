@@ -37,23 +37,13 @@ int calculateFine(vector<int> &nums, int D, int X)
 {
     int fineSum = 0;
 
-    bool isEven = (D % 2 == 0);
+    bool isEvenDate = (D % 2 == 0);
 
     for (int num : nums)
     {
-        if (isEven)
+        if ((isEvenDate && (num % 2 != 0)) || (!isEvenDate && (num % 2 == 0)))
         {
-            if (num % 2 != 0)
-            {
-                fineSum += X;
-            }
-        }
-        else
-        {
-            if (num % 2 == 0)
-            {
-                fineSum += X;
-            }
+            fineSum += X;
         }
     }
     return fineSum;
