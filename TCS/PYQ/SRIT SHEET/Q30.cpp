@@ -19,20 +19,20 @@ using namespace std;
 
 int findNumbers(vector<int> &nums, int K)
 {
-    unordered_map<int, int> prefixSumFreq;
-    prefixSumFreq[0] = 1;
-    int prefixSum = 0, cnt = 0;
+    unordered_map<int, int> hash;
+    hash[0] = 1;
+    int currSum = 0, cnt = 0;
 
-    for (int num : nums)
+    for (auto num : nums)
     {
-        prefixSum += num;
+        currSum += num;
 
-        if (prefixSumFreq.find(prefixSum - K) != prefixSumFreq.end())
+        if (hash.find(currSum - K) != hash.end())
         {
-            cnt += prefixSumFreq[prefixSum - K];
+            cnt += hash[currSum - K];
         }
 
-        prefixSumFreq[prefixSum]++;
+        hash[currSum]++;
     }
 
     return cnt;
