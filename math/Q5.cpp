@@ -9,10 +9,8 @@ int binaryToDecimal(string N)
 
     for (int i = 0; i < len; i++)
     {
-        int n = N[len - 1 - i] - '0';
-        decimal += n * pow(2, i);
+        decimal += (N[len - 1 - i] - '0') * pow(2, i);
     }
-
     return decimal;
 }
 
