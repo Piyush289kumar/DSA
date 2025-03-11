@@ -6,10 +6,9 @@ using namespace std;
 string decimalToBinary(int N)
 {
     string binary = "";
-
     while (N)
     {
-        binary = to_string(N % 2) + binary;
+        binary = to_string((N % 2)) + binary;
         N /= 2;
     }
     return binary;
