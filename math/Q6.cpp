@@ -2,12 +2,10 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-
 int sumOfN(int N)
 {
     return N * (N + 1) / 2;
 }
-
 int main()
 {
     int N;
