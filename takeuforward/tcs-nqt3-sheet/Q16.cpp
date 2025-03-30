@@ -5,27 +5,21 @@ using namespace std;
 
 void findAllSymmetricPairs(vector<pair<int, int>> &nums)
 {
-    vector<pair<int, int>> sets;
-    vector<pair<int, int>> ans;
+    unordered_map<int, int> pairMap;
 
-    for (auto pair : nums)
+    for (auto &p : nums)
     {
-        int a = pair.first;
-        int b = pair.second;
+        int first = p.first;
+        int second = p.second;
 
-        if (find(sets.begin(), sets.end(), make_pair(b, a)) != sets.end())
+        if (pairMap.find(second) != pairMap.end() && pairMap[second] == first)
         {
-            ans.push_back({a, b});
+            cout << "(" << second << ", " << first << ")" << endl;
         }
         else
         {
-            sets.push_back({a, b});
+            pairMap[first] = second;
         }
-    }
-
-    for (auto pair : ans)
-    {
-        cout << "(" << pair.first << ", " << pair.second << ")" << "\t";
     }
 }
 
