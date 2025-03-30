@@ -20,6 +20,9 @@ using namespace std;
 
 string cipher(string &str, int shift)
 {
+    if (shift < 0)
+        return "INVALID INPUT";
+
     string cipherText = "";
 
     for (auto ch : str)
@@ -27,11 +30,11 @@ string cipher(string &str, int shift)
         if (isalpha(ch))
         {
             char base = isupper(ch) ? 'A' : 'a';
-            cipherText += (char)(((ch - base) + shift) % 26) + base;
+            cipherText += (char)((((ch - base) + shift) % 26) + base);
         }
         else if (isdigit(ch))
         {
-            cipherText += (char)(((ch - '0') + shift) % 10) + '0';
+            cipherText += (char)((((ch - '0') + shift) % 10) + '0');
         }
         else
         {
