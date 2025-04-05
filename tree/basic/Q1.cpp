@@ -40,37 +40,51 @@ treeNode *buildTree(treeNode *root)
 
 void levelOrderTraversal(treeNode *root)
 {
-    if (root == NULL)
+    if (!root)
         return;
 
     queue<treeNode *> q;
+    vector<vector<int>> levels;
     q.push(root);
-    q.push(NULL);
+
+    cout << "Level Order BFS : " << endl;
 
     while (!q.empty())
     {
-        treeNode *temp = q.front();
-        q.pop();
-        if (temp == NULL)
+        int size = q.size();
+        vector<int> level;
+
+        for (int i = 0; i < size; i++)
         {
-            cout << endl;
-            if (!q.empty())
-                q.push(NULL);
-        }
-        else
-        {
-            cout << temp->data << " ";
+            treeNode *temp = q.front();
+            q.pop();
+            level.push_back(temp->data);
 
             if (temp->left)
-            {
                 q.push(temp->left);
-            }
-
             if (temp->right)
-            {
                 q.push(temp->right);
-            }
         }
+
+        // Print Curr Order
+        for (auto &tree : level)
+        {
+            cout << tree << " ";
+        }
+        cout << endl;
+        levels.push_back(level);
+    }
+
+    // Print Reverse Tree;
+
+    cout << endl << "REV" << endl;
+
+    for (int i = levels.size() - 1; i >= 0; i--)
+    {
+        for(int val : levels[i]){
+            cout << val << " ";
+        }
+        cout << endl;
     }
 }
 
