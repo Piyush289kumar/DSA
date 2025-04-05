@@ -19,8 +19,9 @@ public:
 
 treeNode *buildTree(treeNode *root)
 {
-    cout << "Enter node data (-1 for NULL): ";
+
     int data;
+    cout << "Enter Node Data : ";
     cin >> data;
 
     if (data == -1)
@@ -28,15 +29,16 @@ treeNode *buildTree(treeNode *root)
 
     root = new treeNode(data);
 
-    cout << "Enter data for left node : " << data << " : " << endl;
+    cout << "Enter Left Node Data : ";
     root->left = buildTree(root->left);
-    cout << "Enter data for right node : " << data << " : " << endl;
+
+    cout << "Enter Right Node Data : ";
     root->right = buildTree(root->right);
 
     return root;
 }
 
-void bfs(treeNode *root)
+void levelOrderTraversal(treeNode *root)
 {
     if (root == NULL)
         return;
@@ -49,18 +51,16 @@ void bfs(treeNode *root)
     {
         treeNode *temp = q.front();
         q.pop();
-
         if (temp == NULL)
         {
             cout << endl;
             if (!q.empty())
-            {
                 q.push(NULL);
-            }
         }
         else
         {
             cout << temp->data << " ";
+
             if (temp->left)
             {
                 q.push(temp->left);
@@ -82,7 +82,7 @@ int main()
     root = buildTree(root);
 
     cout << "BFS : " << endl;
-    bfs(root);
+    levelOrderTraversal(root);
 
     return 0;
 }
