@@ -1,8 +1,9 @@
+/* Q2: Start Patterns */
 #include <bits/stdc++.h>
 
 using namespace std;
 
-void pattern(int N)
+void patternA(int N)
 {
 
     for (int i = 1; i < N; i++)
@@ -13,8 +14,19 @@ void pattern(int N)
         }
         cout << endl;
     }
+}
 
-    
+void patternB(int N)
+{
+
+    for (int i = N; i >= 1; i--)
+    {
+        for (int j = i; j >= 1; j--)
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
 }
 
 int main()
@@ -22,7 +34,9 @@ int main()
     int N;
     cin >> N;
 
-    pattern(N);
+    patternA(N);
+    cout << endl;
+    patternB(N);
 
     return 0;
 }
