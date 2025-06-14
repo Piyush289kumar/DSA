@@ -16,4 +16,5 @@ int main()
     cout << IsEvenOrOdd(N) << endl;
 
     return 0;
+    
 }
