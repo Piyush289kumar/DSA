@@ -35,7 +35,7 @@ int main()
 
     for (auto num : nums)
     {
-        cin >> num;
+        cout << num << " ";
     }
 
     return 0;
