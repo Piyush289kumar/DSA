@@ -10,21 +10,17 @@ private:
     void heapify(int i)
     {
         int largest = i;
-        int left = 2 * i;
-        int right = 2 * i + 1;
+        int leftChild = 2 * i;
+        int rightChild = 2 * i + 1;
 
-        if (left <= size && nums[largest] < nums[left])
-        {
-            largest = left;
-        }
-        if (right <= size && nums[largest] < nums[right])
-        {
-            largest = right;
-        }
+        if (leftChild <= size && nums[largest] < nums[leftChild])
+            largest = leftChild;
+        if (rightChild <= size && nums[largest] < nums[rightChild])
+            largest = rightChild;
 
         if (largest != i)
         {
-            swap(nums[i], nums[largest]);
+            swap(nums[largest], nums[i]);
             heapify(largest);
         }
     }
