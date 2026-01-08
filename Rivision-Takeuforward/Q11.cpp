@@ -6,21 +6,18 @@ using namespace std;
 void removeDuplicates(vector<int> &nums)
 {
     int N = nums.size();
+    if (N == 0)
+        return;
     int K = 0;
 
     for (int i = 0; i < N; i++)
     {
-        if (nums[i] == nums[K])
-        {
-            continue;
-        }
-        else
+        if (nums[i] != nums[K])
         {
             K++;
             nums[K] = nums[i];
         }
     }
-
     nums.resize(K + 1);
 }
 
