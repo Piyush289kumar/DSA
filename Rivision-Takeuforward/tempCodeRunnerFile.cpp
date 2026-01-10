@@ -1,1 +1,1 @@
-cout << num << endl;
+a+d
