@@ -6,7 +6,6 @@ class TreeNode
 public:
     int val;
     TreeNode *left, *right;
-
     TreeNode(int data)
     {
         val = data;
@@ -20,13 +19,11 @@ TreeNode *buildTree(int data)
         return nullptr;
 
     TreeNode *root = new TreeNode(data);
-
     int leftNode, rightNode;
     cout << endl
          << "Left Node : " << data << " ";
     cin >> leftNode;
     root->left = buildTree(leftNode);
-
     cout << endl
          << "Right Node : " << data << " ";
     cin >> rightNode;
@@ -45,9 +42,7 @@ void bfs(TreeNode *root)
     {
         TreeNode *node = q.front();
         q.pop();
-
         cout << node->val << " ";
-
         if (node->left)
             q.push(node->left);
         if (node->right)
